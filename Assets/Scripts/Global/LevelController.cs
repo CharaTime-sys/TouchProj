@@ -93,10 +93,10 @@ public class LevelController : MonoBehaviour
 
         start_text = GameObject.Find("Canvas").transform.Find("Guest_Panel/start_text").gameObject;
 
-        replay_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene(SceneManager.GetActiveScene().name);  });
+        replay_btn.onClick.AddListener(() => { SceneController.Instance._LoadScene(SceneManager.GetActiveScene().name);  });
         quit_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene("Start_Game"); });
         pause_start_btn.onClick.AddListener(() => { Game_Continued(); if_paused = !if_paused; SoundController.Instance.Play_Sfx("click"); });
-        pause_quit_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene("Start_Game");});
+        pause_quit_btn.onClick.AddListener(() => { Debug.Log(SceneController.Instance.name); SceneController.Instance._LoadScene("Start_Game");});
     }
 
     /// <summary>
@@ -136,6 +136,7 @@ public class LevelController : MonoBehaviour
     {
         pause_panel.SetActive(true);
         InActive_Scene();
+        Time.timeScale = 0;
     }
 
     public void Game_Continued()
