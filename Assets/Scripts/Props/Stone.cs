@@ -20,6 +20,11 @@ public class Stone : MonoBehaviour
 
     public bool isPicked = false;
 
+    public GameObject s1;
+    public GameObject s2;
+    public GameObject s3;
+    public GameObject s4;
+
 
     void Update()
     {
@@ -35,7 +40,10 @@ public class Stone : MonoBehaviour
                 }
                 else
                 {
+                    EventManager.instance.PlayerStoneOff(1);
+                    EventManager.instance.PlayerStoneOff(3);
                     isPicked = true;
+                    s2.GetComponent<Stone>().isPicked = false;
                     var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone2.prefab", typeof(GameObject)) as GameObject;
                     EventManager.instance.PlayerStoneOn(1, go);
                     EventManager.instance.PlayerStoneOn(3, go);
@@ -54,7 +62,10 @@ public class Stone : MonoBehaviour
                 }
                 else
                 {
+                    EventManager.instance.PlayerStoneOff(1);
+                    EventManager.instance.PlayerStoneOff(3);
                     isPicked = true;
+                    s1.GetComponent<Stone>().isPicked = false;
                     var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone1.prefab", typeof(GameObject)) as GameObject;
                     EventManager.instance.PlayerStoneOn(1, go);
                     EventManager.instance.PlayerStoneOn(3, go);
@@ -67,11 +78,19 @@ public class Stone : MonoBehaviour
             {
                 if (isPicked)
                 {
-
+                    isPicked = false;
+                    EventManager.instance.PlayerStoneOff(2);
+                    EventManager.instance.PlayerStoneOff(4);
                 }
                 else
                 {
-
+                    EventManager.instance.PlayerStoneOff(2);
+                    EventManager.instance.PlayerStoneOff(4);
+                    isPicked = true;
+                    s4.GetComponent<Stone>().isPicked = false;
+                    var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone3.prefab", typeof(GameObject)) as GameObject;
+                    EventManager.instance.PlayerStoneOn(2, go);
+                    EventManager.instance.PlayerStoneOn(4, go);
                 }
             }
         }
@@ -81,11 +100,19 @@ public class Stone : MonoBehaviour
             {
                 if (isPicked)
                 {
-
+                    isPicked = false;
+                    EventManager.instance.PlayerStoneOff(2);
+                    EventManager.instance.PlayerStoneOff(4);
                 }
                 else
                 {
-
+                    EventManager.instance.PlayerStoneOff(2);
+                    EventManager.instance.PlayerStoneOff(4);
+                    isPicked = true;
+                    s3.GetComponent<Stone>().isPicked = false;
+                    var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone4.prefab", typeof(GameObject)) as GameObject;
+                    EventManager.instance.PlayerStoneOn(2, go);
+                    EventManager.instance.PlayerStoneOn(4, go);
                 }
             }
         }

@@ -25,7 +25,10 @@ public class EventManager : MonoBehaviour
 
     public void PlayerStoneOff(int n)
     {
-        Destroy(Player.transform.GetChild(n).GetChild(0).gameObject);
+        if(Player.transform.GetChild(n).childCount > 0)
+        {
+            Destroy(Player.transform.GetChild(n).GetChild(0).gameObject);
+        }
         //Player.transform.GetChild(n).gameObject.SetActive(false);
     }
 }
