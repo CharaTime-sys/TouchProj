@@ -45,6 +45,8 @@ public class MagicManager : MonoBehaviour
     {
         MagicOn = false;
         MagicStartTime = 0;
+        Player.GetComponent<PlayerHandInfo>().ClearLeftHand();
+        Player.GetComponent<PlayerHandInfo>().ClearRightHand();
     }
 
 
