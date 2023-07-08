@@ -8,6 +8,7 @@ public class SceneController : MonoBehaviour
 {
     public static SceneController Instance;
     public Image progress_sp;
+    public GameObject progress_text;
     public GameObject Load_Panel;
     private void Awake()
     {
@@ -32,7 +33,17 @@ public class SceneController : MonoBehaviour
 
         while (!asyncOperation.isDone)
         {
-            progress_sp.material.SetFloat("_Load", asyncOperation.progress);
+            progress_sp.material.SetFloat("_Load", asyncOperation.progress/0.9f);
+            if (asyncOperation.progress >= 0.9f)
+            {
+                progress_text.SetActive(true);
+                if (Input.anyKeyDown)
+                {
+                    Load_Panel.SetActive(false);
+                    progress_text.SetActive(false);
+                    asyncOperation.allowSceneActivation = true;
+                }
+            }
             yield return null;
         }
     }
