@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResetOnEnter: BackTrigger
-  ResetOnUpdate: 
+  ResetOnUpdate: BackTrigger
   ResetOnExit: 
 --- !u!1101 &3731241702973941372
 AnimatorStateTransition:

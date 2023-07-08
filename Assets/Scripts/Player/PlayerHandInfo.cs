@@ -236,19 +236,22 @@ public class PlayerHandInfo : MonoBehaviour
         if(((Time.time - LTimeStart) > longpresstime) && ((Time.time - RTimeStart) > longpresstime)&&
             isKeyDDown && isKeyJDown)
         {
-            UseMagic();
+            if(LeftHandStatus == HandStatus.PickStone && RightHandStatus == HandStatus.PickStone)
+                UseMagic();
         }
         //长按D
         if ((Time.time - LTimeStart) > longpresstime && !(RTimeStart > 0) &&
             isKeyDDown)
         {
-            UseMagic();
+            if (LeftHandStatus == HandStatus.PickStone)
+                UseMagic();
         }
         //长按J
         if ((Time.time - RTimeStart) > longpresstime && !(LTimeStart > 0) && 
             isKeyJDown)
         {
-            UseMagic();
+            if (RightHandStatus == HandStatus.PickStone)
+                UseMagic();
         }
 
     }
