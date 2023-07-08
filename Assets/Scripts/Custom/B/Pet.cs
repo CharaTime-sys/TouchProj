@@ -6,6 +6,7 @@ public class Pet : ButtonExtension
 {
     public float call_time;
     public CustomB customB;
+    public Animator animator;
 
     public void Set_Custom(CustomB custom)
     {
@@ -20,13 +21,23 @@ public class Pet : ButtonExtension
         }
         else
         {
-            customB.Anger();
+            animator.SetTrigger("fake");
         }
+    }
+
+    public void Set_Anger()
+    {
+        customB.Anger();
     }
 
     protected override void OnMouseDown()
     {
         base.OnMouseDown();
+        animator.SetTrigger("hit");
+    }
+
+    public void Dsy()
+    {
         Destroy(gameObject);
     }
 }

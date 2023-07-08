@@ -80,4 +80,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.46666667
+    functionName: Dsy
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 48c4a5083f19fef4ea8746ee4802efcd, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
