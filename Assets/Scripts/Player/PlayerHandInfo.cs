@@ -21,11 +21,14 @@ public class PlayerHandInfo : MonoBehaviour
 
     public bool isKeyDDown = false;
     public bool isKeyJDown = false;
+    public bool isMouse2Down = false;
 
     public float LTimeStart = 0;
     public float LTimeEnd = 0;
     public float RTimeStart = 0;
     public float RTimeEnd = 0;
+    public float MTimeStart = 0;
+    public float MTimeEnd = 0;
 
     public float longpresstime = 0.5f;
 
@@ -196,6 +199,20 @@ public class PlayerHandInfo : MonoBehaviour
                 StartCoroutine(LRFlag());
             }
         }
+        if (Input.GetMouseButtonDown(1) && CursorController.instance.isCatchingStone)
+        {
+            if(!isMouse2Down)
+            {
+                isMouse2Down = true;
+                MTimeStart = Time.time;
+            }
+        }
+        if ((Input.GetMouseButtonUp(1) && CursorController.instance.isCatchingStone) || !CursorController.instance.isCatchingStone)
+        {
+            isMouse2Down = false;
+            MTimeEnd = Time.time;
+        }
+
         if (!isLROn)
         {
             InputListener();
@@ -254,6 +271,12 @@ public class PlayerHandInfo : MonoBehaviour
                 UseMagic(MagicType.Type2);
         }
 
+        //长按鼠标
+        if(((Time.time - MTimeStart) > longpresstime) && isMouse2Down)
+        {
+            UseMagic2(MagicType.Type2);
+        }
+
     }
 
     //使用魔法
@@ -262,6 +285,16 @@ public class PlayerHandInfo : MonoBehaviour
         if(transform.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("IDLE"))
         {
             transform.GetComponent<Animator>().SetTrigger("MakeTrigger");
+            MagicManager.instance.MagicStart(mtIn);
+        }
+    }
+
+    public void UseMagic2(MagicType mtIn)
+    {
+        if (transform.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("IDLE"))
+        {
+            transform.GetComponent<Animator>().SetTrigger("MakeTrigger2");
+            CursorController.instance.FixAndPlay();
             MagicManager.instance.MagicStart(mtIn);
         }
     }
