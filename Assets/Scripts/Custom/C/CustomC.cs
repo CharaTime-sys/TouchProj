@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Custom : MonoBehaviour
+public class CustomC : Custom
 {
+    public float slow_speed;
     // Start is called before the first frame update
     void Start()
     {

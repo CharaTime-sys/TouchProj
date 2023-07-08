@@ -31,7 +31,7 @@ public class ButtonExtension : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    protected virtual void OnMouseDown()
     {
         //…Ë÷√∞¥œ¬◊¥Ã¨
         isDown = true;
