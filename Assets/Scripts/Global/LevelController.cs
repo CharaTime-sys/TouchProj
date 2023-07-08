@@ -20,7 +20,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject pause_panel;
     #endregion
     [SerializeField] GameObject canvas;
-
+    [Header("鼠标指针")]
+    [SerializeField] Texture2D cursor_tex;
     public Custom custom;
 
     bool if_paused;
@@ -61,6 +62,7 @@ public class LevelController : MonoBehaviour
     #region 初始化相关
     private void Init_UI()
     {
+        Cursor.SetCursor(cursor_tex, new Vector2(0.5f, 0.5f), CursorMode.Auto);
         canvas = Instantiate(canvas);
         dead_panel = Instantiate(dead_panel, canvas.transform);
         guest_panel = Instantiate(guest_panel, canvas.transform);
@@ -83,11 +85,11 @@ public class LevelController : MonoBehaviour
         pause_start_btn = GameObject.Find("Canvas").transform.Find("Pause_Panel/Panel/replay_btn").GetComponent<Button>();
         pause_quit_btn = GameObject.Find("Canvas").transform.Find("Pause_Panel/Panel/quit_btn").GetComponent<Button>();
 
-        replay_btn.onClick.AddListener(() => { SceneController.LoadScene(SceneManager.GetActiveScene().name); });
-        quit_btn.onClick.AddListener(() => { SceneController.LoadScene("Start_Game"); });
+        replay_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene(SceneManager.GetActiveScene().name); });
+        quit_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene("Start_Game"); });
         start_btn.onClick.AddListener(() => { Start_Scene(); if_started = true; });
         pause_start_btn.onClick.AddListener(() => { Game_Continued(); if_paused = !if_paused; });
-        pause_quit_btn.onClick.AddListener(() => { SceneController.LoadScene("Start_Game"); });
+        pause_quit_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene("Start_Game"); });
     }
 
     /// <summary>
