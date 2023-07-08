@@ -777,12 +777,12 @@ GameObject:
   - component: {fileID: 809138323}
   - component: {fileID: 809138322}
   m_Layer: 5
-  m_Name: Setting_Btn
+  m_Name: Credit_Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &809138321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -799,9 +799,9 @@ RectTransform:
   m_Father: {fileID: 1513109211}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -700.50006}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 420.4836, y: 78.8407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &809138322
@@ -847,7 +847,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 809138323}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1149177374}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: _LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Credit
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &809138323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,7 +1193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u8BBE\u7F6E"
+  m_text: "\u5236\u4F5C\u4EBA\u5458"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e8d4693205cdf0469ad7376d2a21697, type: 2}
   m_sharedMaterial: {fileID: 9106943224409151672, guid: 9e8d4693205cdf0469ad7376d2a21697, type: 2}
@@ -1268,6 +1280,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1149177373}
   - component: {fileID: 1149177374}
+  - component: {fileID: 1149177376}
+  - component: {fileID: 1149177375}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1306,7 +1320,115 @@ MonoBehaviour:
   progress_sp: {fileID: 318526054}
   progress_text: {fileID: 1018243197}
   Load_Panel: {fileID: 1364924309}
-  finished: 0
+--- !u!82 &1149177375
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149177371}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1149177376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149177371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22acf03572844a14f922ceaa5f05908f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audiosource: {fileID: 1149177375}
 --- !u!1 &1200836856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,8 +2045,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -65.40332}
-  m_SizeDelta: {x: 523.2266, y: 130.80658}
+  m_AnchoredPosition: {x: 0.000015258789, y: -65.40332}
+  m_SizeDelta: {x: 1001.2454, y: 130.8066}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097706215
 MonoBehaviour:
@@ -1946,10 +2068,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Touch Game
+  m_text: "\u6B3A\u8BC8\u5E08\u4E4B\u89E6\uFF1A\u4E0D\u53EF\u89C1\u7684\u8F6C\u6362"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9e8d4693205cdf0469ad7376d2a21697, type: 2}
+  m_sharedMaterial: {fileID: 9106943224409151672, guid: 9e8d4693205cdf0469ad7376d2a21697, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

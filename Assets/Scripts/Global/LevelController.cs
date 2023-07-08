@@ -10,9 +10,9 @@ public class LevelController : MonoBehaviour
     #region 按钮
     [SerializeField] Button replay_btn;
     [SerializeField] Button quit_btn;
-    [SerializeField] Button start_btn;
     [SerializeField] Button pause_start_btn;
     [SerializeField] Button pause_quit_btn;
+    [SerializeField] GameObject start_text;
     #endregion
     #region 画板
     [SerializeField] GameObject dead_panel;
@@ -23,9 +23,10 @@ public class LevelController : MonoBehaviour
     [Header("鼠标指针")]
     [SerializeField] Texture2D cursor_tex;
     public Custom custom;
-
+    public AnimationClip intro_clip;
     bool if_paused;
     bool if_started = false;
+    bool if_animed = false;
     private void Awake()
     {
         Instance = this;
@@ -37,10 +38,16 @@ public class LevelController : MonoBehaviour
         Set_Btn();
         custom = Instantiate(custom);
         InActive_Scene();
+        //直接invoke，不用动画事件
+        Invoke(nameof(Set_Animed), intro_clip.length);
     }
 
     private void Update()
     {
+        if (if_animed)
+        {
+            Game_Ready();
+        }
         if (!if_started)
         {
             return;
@@ -81,15 +88,15 @@ public class LevelController : MonoBehaviour
     {
         replay_btn = GameObject.Find("Canvas").transform.Find("Dead_Panel/Panel/replay_btn").GetComponent<Button>();
         quit_btn = GameObject.Find("Canvas").transform.Find("Dead_Panel/Panel/quit_btn").GetComponent<Button>();
-        start_btn = GameObject.Find("Canvas").transform.Find("Guest_Panel/start_btn").GetComponent<Button>();
         pause_start_btn = GameObject.Find("Canvas").transform.Find("Pause_Panel/Panel/replay_btn").GetComponent<Button>();
         pause_quit_btn = GameObject.Find("Canvas").transform.Find("Pause_Panel/Panel/quit_btn").GetComponent<Button>();
 
-        replay_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene(SceneManager.GetActiveScene().name); });
+        start_text = GameObject.Find("Canvas").transform.Find("Guest_Panel/start_text").gameObject;
+
+        replay_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene(SceneManager.GetActiveScene().name);  });
         quit_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene("Start_Game"); });
-        start_btn.onClick.AddListener(() => { Start_Scene(); if_started = true; });
-        pause_start_btn.onClick.AddListener(() => { Game_Continued(); if_paused = !if_paused; });
-        pause_quit_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene("Start_Game"); });
+        pause_start_btn.onClick.AddListener(() => { Game_Continued(); if_paused = !if_paused; SoundController.Instance.Play_Sfx("click"); });
+        pause_quit_btn.onClick.AddListener(() => { SceneController.Instance.LoadScene("Start_Game");});
     }
 
     /// <summary>
@@ -100,7 +107,6 @@ public class LevelController : MonoBehaviour
         custom.gameObject.GetComponent<Animator>().enabled = false;
         custom.enabled = false;
         GameObject.Find("Player").GetComponent<Animator>().enabled = false;
-        Time.timeScale = 0;
     }
     private void Start_Scene()
     {
@@ -136,6 +142,22 @@ public class LevelController : MonoBehaviour
     {
         pause_panel.SetActive(false);
         Start_Scene();
+    }
+
+    public void Game_Ready()
+    {
+        if (Input.anyKeyDown)
+        {
+            Start_Scene();
+            if_started = true;
+            SoundController.Instance.Play_Sfx("click");
+        }
+    }
+
+    public void Set_Animed()
+    {
+        start_text.SetActive(true);
+        if_animed = true;
     }
     #endregion
 }

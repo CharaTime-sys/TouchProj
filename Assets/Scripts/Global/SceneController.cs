@@ -22,6 +22,7 @@ public class SceneController : MonoBehaviour
 
     public void _LoadScene(string name)
     {
+        SoundController.Instance.Play_Sfx("click");
         StartCoroutine(LoadScene(name));
     }
 
@@ -30,6 +31,7 @@ public class SceneController : MonoBehaviour
         Load_Panel.SetActive(true);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(name);
         asyncOperation.allowSceneActivation = false;
+        GameObject.Find("Canvas").SetActive(false);
 
         while (!asyncOperation.isDone)
         {
