@@ -11,12 +11,6 @@ public class SceneController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public static void LoadScene(string name)
     {
         SceneManager.LoadScene(name);
