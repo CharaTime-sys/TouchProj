@@ -237,32 +237,32 @@ public class PlayerHandInfo : MonoBehaviour
             isKeyDDown && isKeyJDown)
         {
             if(LeftHandStatus == HandStatus.PickStone && RightHandStatus == HandStatus.PickStone)
-                UseMagic();
+                UseMagic(MagicType.Type3);
         }
         //长按D
         if ((Time.time - LTimeStart) > longpresstime && !(RTimeStart > 0) &&
             isKeyDDown)
         {
             if (LeftHandStatus == HandStatus.PickStone)
-                UseMagic();
+                UseMagic(MagicType.Type1);
         }
         //长按J
         if ((Time.time - RTimeStart) > longpresstime && !(LTimeStart > 0) && 
             isKeyJDown)
         {
             if (RightHandStatus == HandStatus.PickStone)
-                UseMagic();
+                UseMagic(MagicType.Type2);
         }
 
     }
 
     //使用魔法
-    public void UseMagic()
+    public void UseMagic(MagicType mtIn)
     {
         if(transform.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("IDLE"))
         {
             transform.GetComponent<Animator>().SetTrigger("MakeTrigger");
-            MagicManager.instance.MagicStart();
+            MagicManager.instance.MagicStart(mtIn);
         }
     }
 
