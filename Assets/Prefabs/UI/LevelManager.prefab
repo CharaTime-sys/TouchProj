@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3475404996018870786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3475404996018870787}
+  - component: {fileID: 3475404996018870788}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3475404996018870787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3475404996018870786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3475404996018870788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3475404996018870786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f4c5bf298a5734c9c94ace5ab35fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replay_btn: {fileID: 0}
+  quit_btn: {fileID: 0}
+  start_btn: {fileID: 0}
+  pause_start_btn: {fileID: 0}
+  pause_quit_btn: {fileID: 0}
+  dead_panel: {fileID: 1588502399885640863, guid: cc77947fb3fd02b4997ed14b99bbfff3, type: 3}
+  guest_panel: {fileID: 2551768140358803970, guid: db65eef33b7b16d4dbae44c6b647d977, type: 3}
+  pause_panel: {fileID: 2876892016565112961, guid: 059111bce24d0404c9583dfb90038472, type: 3}
+  canvas: {fileID: 8950848223727242483, guid: 1070d6138da1e5d46b64df070acd7e58, type: 3}
+  custom: {fileID: 2547357856292870681, guid: e1f138748bad1904c817bc87f378cbba, type: 3}

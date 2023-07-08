@@ -23,9 +23,10 @@ public class Custom : MonoBehaviour
     [Header("收回注意力的时间和范围")]
     [SerializeField] float wait_time = 4;
     [SerializeField] float wait_time_range = 1;
-    float look_timer;
-    float wait_timer;
+    public float look_timer;
+    public float wait_timer;
     #endregion
+
     #region 组件
     Animator animator;
     Custom_State state;
@@ -110,21 +111,30 @@ public class Custom : MonoBehaviour
     #region 动画相关
     public void Idle()
     {
+        //设置动画状态
         animator.SetBool("Left", false);
         animator.SetBool("Right", false);
         animator.SetTrigger("Idle");
+        //设置客户状态
         state = Custom_State.Idle;
+        //重置时间与相应操作
         Set_WaitTimer();
+        if (idle_action == null)
+        {
+            return;
+        }
         idle_action();
     }
 
     public void Anger()
     {
+        //设置动画状态
         animator.SetBool("Left", false);
         animator.SetBool("Right", false);
         animator.SetTrigger("Idle");
         animator.SetTrigger("Anger");
-        UIController.Instance.Dead();
+        //死亡
+        LevelController.Instance.Dead();
     }
 
     public void Look(Look_Type type = Look_Type.Left)
@@ -144,6 +154,10 @@ public class Custom : MonoBehaviour
         }
         state = Custom_State.Look;
         Set_LookTimer();
+        if (look_action == null)
+        {
+            return;
+        }
         look_action();
     }
     #endregion

@@ -17,11 +17,11 @@ public class SceneController : MonoBehaviour
         
     }
 
-    public void LoadScene(string name)
+    public static void LoadScene(string name)
     {
         SceneManager.LoadScene(name);
     }
-    public void ExitGame()
+    public static void ExitGame()
     {
         Application.Quit();
     }

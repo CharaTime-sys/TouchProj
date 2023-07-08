@@ -195,7 +195,6 @@ GameObject:
   m_Component:
   - component: {fileID: 415638872}
   - component: {fileID: 415638873}
-  - component: {fileID: 415638874}
   m_Layer: 0
   m_Name: Stone3
   m_TagString: Untagged
@@ -270,24 +269,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &415638874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415638871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ea110d74451d940b22e5781ed8de9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stype: 2
-  isPicked: 0
-  s1: {fileID: 7918224908526431482}
-  s2: {fileID: 1185197375}
-  s3: {fileID: 415638871}
-  s4: {fileID: 1555522425}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +464,8 @@ MonoBehaviour:
   look_time_range: 0
   wait_time: 0
   wait_time_range: 0
+  look_timer: 0
+  wait_timer: 0
 --- !u!1 &770151014
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,10 +742,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stype: 1
   isPicked: 0
-  s1: {fileID: 7918224908526431482}
-  s2: {fileID: 1185197375}
-  s3: {fileID: 415638871}
-  s4: {fileID: 1555522425}
+  s1: {fileID: 0}
+  s2: {fileID: 0}
+  s3: {fileID: 0}
+  s4: {fileID: 0}
 --- !u!1 &1245876167
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +871,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1555522426}
   - component: {fileID: 1555522427}
-  - component: {fileID: 1555522428}
   m_Layer: 0
   m_Name: Stone4
   m_TagString: Untagged
@@ -963,24 +945,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1555522428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555522425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ea110d74451d940b22e5781ed8de9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stype: 3
-  isPicked: 0
-  s1: {fileID: 7918224908526431482}
-  s2: {fileID: 1185197375}
-  s3: {fileID: 415638871}
-  s4: {fileID: 1555522425}
 --- !u!1 &1630509488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,7 +1104,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069990086}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: abecc9f631a6d1e45908294c1d7b5f66, type: 2}
   m_CullingMode: 0
@@ -1294,7 +1258,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2890763631384304616}
   - component: {fileID: 894636208102215668}
-  - component: {fileID: 7918224908526431483}
   m_Layer: 0
   m_Name: Stone1
   m_TagString: Untagged
@@ -1302,21 +1265,3 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7918224908526431483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7918224908526431482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ea110d74451d940b22e5781ed8de9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stype: 0
-  isPicked: 0
-  s1: {fileID: 7918224908526431482}
-  s2: {fileID: 1185197375}
-  s3: {fileID: 415638871}
-  s4: {fileID: 1555522425}
