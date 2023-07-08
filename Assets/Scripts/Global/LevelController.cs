@@ -27,6 +27,9 @@ public class LevelController : MonoBehaviour
     bool if_paused;
     bool if_started = false;
     bool if_animed = false;
+
+    public GameObject GuestBornPos;
+
     private void Awake()
     {
         Instance = this;
@@ -36,7 +39,7 @@ public class LevelController : MonoBehaviour
     {
         Init_UI();
         Set_Btn();
-        custom = Instantiate(custom);
+        custom = Instantiate(custom,GuestBornPos.transform);
         InActive_Scene();
         //直接invoke，不用动画事件
         Invoke(nameof(Set_Animed), intro_clip.length);
