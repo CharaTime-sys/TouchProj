@@ -29,6 +29,9 @@ public class PlayerHandInfo : MonoBehaviour
 
     public float longpresstime = 0.5f;
 
+    public float MagicTimer = 3.0f;
+    public float StartMagicTime = 0.0f;
+
     public bool isLROn = false;
 
     public void LeftHandPick(GameObject pickObj)
@@ -100,7 +103,6 @@ public class PlayerHandInfo : MonoBehaviour
             {
                 //清空
                 ClearRightHand();
-
             }
             else
             {
@@ -124,8 +126,8 @@ public class PlayerHandInfo : MonoBehaviour
             return;
         RightHandStatus = HandStatus.Nothing;
         RightHandStone.GetComponent<Stone>().isPicked = false;
-        EventManager.instance.PlayerStoneOff(1);
-        EventManager.instance.PlayerStoneOff(3);
+        EventManager.instance.PlayerStoneOff(2);
+        EventManager.instance.PlayerStoneOff(4);
         RightHandStone = null;
     }
 
@@ -143,7 +145,7 @@ public class PlayerHandInfo : MonoBehaviour
         }
         else if (RightHandStone.GetComponent<Stone>().stype == StoneType.R2)
         {
-            var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone4s.prefab", typeof(GameObject)) as GameObject;
+            var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone4.prefab", typeof(GameObject)) as GameObject;
             EventManager.instance.PlayerStoneOn(2, go);
             EventManager.instance.PlayerStoneOn(4, go);
         }
@@ -203,8 +205,9 @@ public class PlayerHandInfo : MonoBehaviour
     IEnumerator LRFlag()
     {
         isLROn = true;        
-        yield return new WaitForSecondsRealtime(1.0f);
+        yield return new WaitForSecondsRealtime(0.1f);
         isLROn = false;
+        EndMagic();
     }
 
     public void InputListener()
@@ -213,7 +216,9 @@ public class PlayerHandInfo : MonoBehaviour
         if ((LTimeEnd - LTimeStart) < longpresstime && (LTimeEnd > LTimeStart))
         {
             if(RTimeStart == 0)
-                Debug.Log("D d");
+            {
+                LeftHandPick(StoneManager.instance.s2);
+            }
             LTimeStart = 0;
             LTimeEnd = 0;
         }
@@ -221,7 +226,9 @@ public class PlayerHandInfo : MonoBehaviour
         if ((RTimeEnd - RTimeStart) < longpresstime && (RTimeEnd > RTimeStart))
         {
             if (LTimeStart == 0)
-                Debug.Log("R d");
+            {
+                RightHandPick(StoneManager.instance.s3);
+            }
             RTimeStart = 0;
             RTimeEnd = 0;
         }
@@ -229,20 +236,36 @@ public class PlayerHandInfo : MonoBehaviour
         if(((Time.time - LTimeStart) > longpresstime) && ((Time.time - RTimeStart) > longpresstime)&&
             isKeyDDown && isKeyJDown)
         {
-            Debug.Log("D R l");
+            UseMagic();
         }
         //长按D
         if ((Time.time - LTimeStart) > longpresstime && !(RTimeStart > 0) &&
             isKeyDDown)
         {
-            Debug.Log("D l");
+            UseMagic();
         }
         //长按J
         if ((Time.time - RTimeStart) > longpresstime && !(LTimeStart > 0) && 
             isKeyJDown)
         {
-            Debug.Log("R l");
+            UseMagic();
         }
 
+    }
+
+    //使用魔法
+    public void UseMagic()
+    {
+        if(transform.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("IDLE"))
+        {
+            transform.GetComponent<Animator>().SetTrigger("MakeTrigger");
+            MagicManager.instance.MagicStart();
+        }
+    }
+
+    public void EndMagic()
+    {
+        transform.GetComponent<Animator>().SetTrigger("BackTrigger");
+        MagicManager.instance.MagicStop();
     }
 }
