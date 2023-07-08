@@ -29,6 +29,7 @@ public class LevelController : MonoBehaviour
     bool if_animed = false;
 
     public GameObject GuestBornPos;
+    public GameObject stage;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class LevelController : MonoBehaviour
     {
         Init_UI();
         Set_Btn();
-        custom = Instantiate(custom,GuestBornPos.transform);
+        //custom = Instantiate(custom,GuestBornPos.transform);
         InActive_Scene();
         //直接invoke，不用动画事件
         Invoke(nameof(Set_Animed), intro_clip.length);
@@ -107,16 +108,19 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void InActive_Scene()
     {
-        custom.gameObject.GetComponent<Animator>().enabled = false;
-        custom.enabled = false;
-        GameObject.Find("Player").GetComponent<Animator>().enabled = false;
+        //custom.gameObject.GetComponent<Animator>().enabled = false;
+        //custom.enabled = false;
+        //GameObject.Find("Player").GetComponent<Animator>().enabled = false;
+        //GameObject.Find("Player").SetActive(false);
     }
     private void Start_Scene()
     {
-        custom.gameObject.GetComponent<Animator>().enabled = true;
-        custom.enabled = true;
-        GameObject.Find("Player").GetComponent<Animator>().enabled = true;
+        //custom.gameObject.GetComponent<Animator>().enabled = true;
+        //custom.enabled = true;
+        //GameObject.Find("Player").GetComponent<Animator>().enabled = true;
+        //GameObject.Find("Player").SetActive(true);
         guest_panel.SetActive(false);
+        stage.SetActive(true);
         Time.timeScale = 1;
     }
     #endregion

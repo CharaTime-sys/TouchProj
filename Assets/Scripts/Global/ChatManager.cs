@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class ChatManager : MonoBehaviour
     public GameObject ChatPop1;
     public GameObject ChatPop2;
     public GameObject ChatPop3;
+
+    public Action KeepInLevel;
 
     private void Awake()
     {
@@ -37,18 +40,23 @@ public class ChatManager : MonoBehaviour
             ChatCount++;
         }
         else if (ChatCount == 1)
-        {
+        { 
+            ChatPop1.SetActive(false);
             ChatPop2.SetActive(true);
             ChatCount++;
         }
         else if (ChatCount == 2)
         {
+            ChatPop2.SetActive(false);
             ChatPop3.SetActive(true);
             ChatCount++;
         }
         else if (ChatCount == 3)
         {
-            //场景跳转
+            ChatPop3.SetActive(false);
+            QPlayer.GetComponent<Animator>().SetTrigger("QuitTrigger");
+            //关卡逻辑继续
+
         }
     }
 }
