@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3475404996018870787}
   - component: {fileID: 3475404996018870788}
+  - component: {fileID: 1198553890}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -52,7 +53,23 @@ MonoBehaviour:
   dead_panel: {fileID: 1588502399885640863, guid: cc77947fb3fd02b4997ed14b99bbfff3, type: 3}
   guest_panel: {fileID: 2551768140358803970, guid: db65eef33b7b16d4dbae44c6b647d977, type: 3}
   pause_panel: {fileID: 2876892016565112961, guid: 059111bce24d0404c9583dfb90038472, type: 3}
+  next_panel: {fileID: 2551768140358803970, guid: 245d7bbea205b67428a28c90f4a454b2, type: 3}
   canvas: {fileID: 8950848223727242483, guid: 1070d6138da1e5d46b64df070acd7e58, type: 3}
   cursor_tex: {fileID: 2800000, guid: 2928a547d3098104aa39dd264a1e95d1, type: 3}
   custom: {fileID: 2547357856292870681, guid: e1f138748bad1904c817bc87f378cbba, type: 3}
   intro_clip: {fileID: 7400000, guid: 7cd06b43d9ed01d4d82083d01d4773c1, type: 2}
+  GuestBornPos: {fileID: 0}
+  stage: {fileID: 0}
+--- !u!114 &1198553890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3475404996018870786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46edbaf5a7212d4aa9cf7e94837c472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCatchingStone: 1

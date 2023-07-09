@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public enum Look_Type
@@ -32,8 +33,14 @@ public class Custom : MonoBehaviour
     Custom_State state;
     System.Action idle_action;
     System.Action look_action;
+    PlayerHandInfo player;
+    GameObject cur_gem;
     #endregion
 
+    [Header("需要的宝石")]
+    public MagicType gem_type;
+    [Header("需求次数")]
+    public int require_num;
     /// <summary>
     /// 设置行为
     /// </summary>
@@ -48,16 +55,51 @@ public class Custom : MonoBehaviour
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
+        player = GameObject.Find("Player").GetComponent<PlayerHandInfo>();
         Set_LookTimer();
         Set_WaitTimer();
+        Init_Gem();
     }
 
     // Update is called once per frame
     void Update()
     {
         Random_IdleAndLook();
+        Check_Player();
+        Check_Gem();
     }
 
+    #region 初始化相关
+    protected virtual void Init_Gem()
+    {
+        string path = "Assets/Prefabs/Props/Gem_";
+        switch (Get_RandomGemType())
+        {
+            case MagicType.Type1:
+                path += "1.prefab";
+                gem_type = MagicType.Type1;
+                break;
+            case MagicType.Type2:
+                path += "2.prefab";
+                gem_type = MagicType.Type2;
+                break;
+            case MagicType.Type3:
+                path += "3.prefab";
+                gem_type = MagicType.Type3;
+                break;
+            default:
+                break;
+        }
+        GameObject target_obj = AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject;
+        target_obj = Instantiate(target_obj, transform.GetChild(0).transform);
+        target_obj.transform.localScale = new Vector3(2.23f,2.23f,2.23f);
+        target_obj.transform.localPosition = new Vector3(0.05f, 0.42f, 0);
+
+        cur_gem = target_obj;
+    }
+    #endregion
+
+    #region Update事件
     /// <summary>
     /// 随机分散注意力
     /// </summary>
@@ -90,11 +132,57 @@ public class Custom : MonoBehaviour
         }
     }
 
+    protected virtual void Check_Player()
+    {
+        //玩家没有欺诈
+        if (player.LeftHandStatus == HandStatus.Nothing && player.RightHandStatus == HandStatus.Nothing)
+        {
+            return;
+        }
+        else
+        {
+            //顾客没发现
+            if (state == Custom_State.Look)
+            {
+                return;
+            }
+            animator.SetTrigger("Anger");
+        }
+    }
+
+    protected virtual void Check_Gem()
+    {
+        if (MagicManager.instance.Gem_Show==null)
+        {
+            return;
+        }
+
+        if (MagicManager.instance.mt == gem_type)
+        {
+            require_num--;
+            Destroy(cur_gem);
+            Init_Gem();
+        }
+        Destroy(MagicManager.instance.Gem_Show);
+        if (require_num <=0)
+        {
+            LevelController.Instance.Game_Next();
+        }
+    }
+    #endregion
+
+    #region 随机生成
     public Look_Type Get_RandomLookType()
     {
         Look_Type[] types = (Look_Type[])System.Enum.GetValues(typeof(Look_Type));
         return types[Random.Range(0, types.Length)];
     }
+    public MagicType Get_RandomGemType()
+    {
+        MagicType[] types = (MagicType[])System.Enum.GetValues(typeof(MagicType));
+        return types[Random.Range(0, types.Length)];
+    }
+    #endregion
 
     #region 计时相关
     private void Set_LookTimer()
