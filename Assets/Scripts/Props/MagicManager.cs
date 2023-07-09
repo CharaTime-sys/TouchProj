@@ -55,6 +55,11 @@ public class MagicManager : MonoBehaviour
                 Player.GetComponent<Animator>().SetTrigger("EndTrigger");
                 MagicStop();
                 SummonGem();
+
+                if(Level1_1_Chat.instance != null)
+                {
+                    Level1_1_Chat.instance.TipsTools();
+                }
             }
         }
     }

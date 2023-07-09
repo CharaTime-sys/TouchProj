@@ -14,7 +14,7 @@ public class ChatManager : MonoBehaviour
     public GameObject ChatPop2;
     public GameObject ChatPop3;
 
-    public Action KeepInLevel;
+    public System.Action KeepInLevel;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class ChatManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButton(0) && QPlayer != null)
         {
             QPlayer.GetComponent<Animator>().SetTrigger("SpeakTrigger");
         }
@@ -56,7 +56,7 @@ public class ChatManager : MonoBehaviour
             ChatPop3.SetActive(false);
             QPlayer.GetComponent<Animator>().SetTrigger("QuitTrigger");
             //¹Ø¿¨Âß¼­¼ÌÐø
-
+            KeepInLevel();
         }
     }
 }
