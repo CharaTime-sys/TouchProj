@@ -187,7 +187,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 2.0166667
+        time: 2
         value: 8.44
         inSlope: 0
         outSlope: 0
@@ -209,7 +209,7 @@ AnimationClip:
     - time: 1
       value: {fileID: -5851389584792780433, guid: 32cd1cd397ef46b4cad5aa2b5cea9399, type: 3}
     - time: 2
-      value: {fileID: 0}
+      value: {fileID: 1803573718722300079, guid: 32cd1cd397ef46b4cad5aa2b5cea9399, type: 3}
     - time: 2.0166667
       value: {fileID: 1803573718722300079, guid: 32cd1cd397ef46b4cad5aa2b5cea9399, type: 3}
     attribute: m_Sprite
@@ -268,7 +268,7 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 1803573718722300079, guid: 32cd1cd397ef46b4cad5aa2b5cea9399, type: 3}
     - {fileID: -5851389584792780433, guid: 32cd1cd397ef46b4cad5aa2b5cea9399, type: 3}
-    - {fileID: 0}
+    - {fileID: 1803573718722300079, guid: 32cd1cd397ef46b4cad5aa2b5cea9399, type: 3}
     - {fileID: 1803573718722300079, guid: 32cd1cd397ef46b4cad5aa2b5cea9399, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
@@ -461,7 +461,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 2.0166667
+        time: 2
         value: 8.44
         inSlope: 0
         outSlope: 0
