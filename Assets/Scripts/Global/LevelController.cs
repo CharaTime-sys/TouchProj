@@ -14,14 +14,12 @@ public class LevelController : MonoBehaviour
     [SerializeField] Button pause_start_btn;
     [SerializeField] Button pause_quit_btn;
     [SerializeField] GameObject start_text;
-    [SerializeField] TextMeshProUGUI tip_text;
     #endregion
     #region »­°å
     [SerializeField] GameObject dead_panel;
     [SerializeField] GameObject guest_panel;
     [SerializeField] GameObject pause_panel;
     [SerializeField] GameObject next_panel;
-    [SerializeField] GameObject tip_panel;
     #endregion
     [SerializeField] GameObject canvas;
     public Custom custom;
@@ -87,19 +85,16 @@ public class LevelController : MonoBehaviour
         guest_panel = Instantiate(guest_panel, canvas.transform);
         pause_panel = Instantiate(pause_panel, canvas.transform);
         next_panel = Instantiate(next_panel, canvas.transform);
-        tip_panel = Instantiate(tip_panel, canvas.transform);
 
         canvas.name = "Canvas";
         dead_panel.name = "Dead_Panel";
         guest_panel.name = "Guest_Panel";
         pause_panel.name = "Pause_Panel";
         next_panel.name = "Next_Panel";
-        tip_panel.name = "Tip_Panel";
 
         dead_panel.SetActive(false);
         pause_panel.SetActive(false);
         next_panel.SetActive(false);
-        tip_panel.SetActive(false);
     }
 
     private void Set_Btn()
@@ -110,15 +105,11 @@ public class LevelController : MonoBehaviour
         pause_quit_btn = GameObject.Find("Canvas").transform.Find("Pause_Panel/Panel/quit_btn").GetComponent<Button>();
 
         start_text = GameObject.Find("Canvas").transform.Find("Guest_Panel/start_text").gameObject;
-<<<<<<< Updated upstream
         intro_img = GameObject.Find("Canvas").transform.Find("Guest_Panel/People").GetComponent<Image>();
         intro_txt = GameObject.Find("Canvas").transform.Find("Guest_Panel/Intro").GetComponent<TextMeshProUGUI>();
         intro_txt.text = intro;
         intro_img.sprite = sprite;
         intro_img.SetNativeSize();
-=======
-        tip_text = GameObject.Find("Canvas").transform.Find("Tip_Panel/Image/tip_text").GetComponent<TextMeshProUGUI>();
->>>>>>> Stashed changes
 
         replay_btn.onClick.AddListener(() => { if (SceneController.Instance == null) { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); return; } SceneController.Instance._LoadScene(SceneManager.GetActiveScene().name);  });
         quit_btn.onClick.AddListener(() => { if (SceneController.Instance == null){ SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); return; } SceneController.Instance.LoadScene("Start_Game"); });
