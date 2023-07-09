@@ -110,12 +110,15 @@ public class LevelController : MonoBehaviour
         pause_quit_btn = GameObject.Find("Canvas").transform.Find("Pause_Panel/Panel/quit_btn").GetComponent<Button>();
 
         start_text = GameObject.Find("Canvas").transform.Find("Guest_Panel/start_text").gameObject;
+<<<<<<< Updated upstream
         intro_img = GameObject.Find("Canvas").transform.Find("Guest_Panel/People").GetComponent<Image>();
         intro_txt = GameObject.Find("Canvas").transform.Find("Guest_Panel/Intro").GetComponent<TextMeshProUGUI>();
         intro_txt.text = intro;
         intro_img.sprite = sprite;
         intro_img.SetNativeSize();
+=======
         tip_text = GameObject.Find("Canvas").transform.Find("Tip_Panel/Image/tip_text").GetComponent<TextMeshProUGUI>();
+>>>>>>> Stashed changes
 
         replay_btn.onClick.AddListener(() => { if (SceneController.Instance == null) { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); return; } SceneController.Instance._LoadScene(SceneManager.GetActiveScene().name);  });
         quit_btn.onClick.AddListener(() => { if (SceneController.Instance == null){ SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); return; } SceneController.Instance.LoadScene("Start_Game"); });
