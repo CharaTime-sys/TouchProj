@@ -53,6 +53,7 @@ public class Level1_1_Chat : MonoBehaviour
         {
             tipPop1.SetActive(false);
             tipPop2.SetActive(true);
+            LevelController1_1.Instance.Game_Next();
             tipCount++;
         }
         else if (tipCount == 2)

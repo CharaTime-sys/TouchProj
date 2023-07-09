@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour
     public Image progress_sp;
     public GameObject progress_text;
     public GameObject Load_Panel;
+    public Texture2D cursor_tex;
     private void Awake()
     {
         if (Instance == null)
@@ -25,6 +26,7 @@ public class SceneController : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        Cursor.SetCursor(cursor_tex, new Vector2(0f, 0f), CursorMode.Auto);
     }
 
     public void _LoadScene(string name)
@@ -33,9 +35,14 @@ public class SceneController : MonoBehaviour
         StartCoroutine(LoadScene(name));
     }
 
+    public void _LoadScene()
+    {
+        SoundController.Instance.Play_Sfx("click");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public IEnumerator LoadScene(string name)
     {
-        Load_Panel.SetActive(true);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(name);
         asyncOperation.allowSceneActivation = false;
         GameObject.Find("Canvas").SetActive(false);
@@ -45,13 +52,7 @@ public class SceneController : MonoBehaviour
             progress_sp.material.SetFloat("_Load", asyncOperation.progress/0.9f);
             if (asyncOperation.progress >= 0.9f)
             {
-                progress_text.SetActive(true);
-                if (Input.anyKeyDown)
-                {
-                    Load_Panel.SetActive(false);
-                    progress_text.SetActive(false);
-                    asyncOperation.allowSceneActivation = true;
-                }
+                asyncOperation.allowSceneActivation = true;
             }
             yield return null;
         }
@@ -59,5 +60,10 @@ public class SceneController : MonoBehaviour
     public static void ExitGame()
     {
         Application.Quit();
+    }
+
+    public string Get_Level_name()
+    {
+        return SceneManager.GetActiveScene().name;
     }
 }

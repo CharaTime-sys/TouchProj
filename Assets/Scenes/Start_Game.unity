@@ -216,7 +216,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level1
+          m_StringArgument: Introduction
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &40062134
@@ -1320,6 +1320,7 @@ MonoBehaviour:
   progress_sp: {fileID: 318526054}
   progress_text: {fileID: 1018243197}
   Load_Panel: {fileID: 1364924309}
+  cursor_tex: {fileID: 2800000, guid: 426fcade359d8bb41bcd33e5c6d100ea, type: 3}
 --- !u!82 &1149177375
 AudioSource:
   m_ObjectHideFlags: 0

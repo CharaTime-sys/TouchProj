@@ -30,11 +30,11 @@ public class Custom : MonoBehaviour
     #endregion
 
     #region ×é¼þ
-    Animator animator;
+    public Animator animator;
     Custom_State state;
     System.Action idle_action;
     System.Action look_action;
-    PlayerHandInfo player;
+    public PlayerHandInfo player;
     GameObject cur_gem;
     #endregion
 

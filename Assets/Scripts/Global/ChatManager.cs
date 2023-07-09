@@ -22,6 +22,21 @@ public class ChatManager : MonoBehaviour
         {
             instance = this;
         }
+        Register_Level();
+    }
+
+    private void Register_Level()
+    {
+        switch (SceneController.Instance.Get_Level_name())
+        {
+            case "Introduction":
+                KeepInLevel += (() => { SceneController.Instance._LoadScene(); });
+                break;
+            case "Level_1_0":
+                break;
+            default:
+                break;
+        }
     }
 
     private void Update()
