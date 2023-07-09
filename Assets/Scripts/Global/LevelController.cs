@@ -127,12 +127,20 @@ public class LevelController : MonoBehaviour
         custom.gameObject.GetComponent<Animator>().enabled = false;
         custom.enabled = false;
         GameObject.Find("Player").GetComponent<Animator>().enabled = false;
+        if (GameObject.Find("Butterfly"))
+        {
+            GameObject.Find("Butterfly").GetComponent<Animator>().enabled = false;
+        }
     }
     private void Start_Scene()
     {
         custom.gameObject.GetComponent<Animator>().enabled = true;
         custom.enabled = true;
         GameObject.Find("Player").GetComponent<Animator>().enabled = true;
+        if (GameObject.Find("Butterfly"))
+        {
+            GameObject.Find("Butterfly").GetComponent<Animator>().enabled = true;
+        }
         GameObject.Find("Player").SetActive(true);
         guest_panel.SetActive(false);
         stage.SetActive(true);

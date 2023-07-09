@@ -14,6 +14,7 @@ public enum Custom_State
 {
     Idle,
     Look,
+    Right,
 }
 
 public class Custom : MonoBehaviour
@@ -31,7 +32,7 @@ public class Custom : MonoBehaviour
 
     #region 组件
     public Animator animator;
-    Custom_State state;
+    public Custom_State state;
     System.Action idle_action;
     System.Action look_action;
     public PlayerHandInfo player;
@@ -130,6 +131,7 @@ public class Custom : MonoBehaviour
                 }
                 break;
             case Custom_State.Look:
+            case Custom_State.Right:
                 if (wait_timer >= 0f)
                 {
                     wait_timer -= Time.deltaTime;
@@ -154,7 +156,7 @@ public class Custom : MonoBehaviour
         else
         {
             //顾客没发现
-            if (state == Custom_State.Look)
+            if (state == Custom_State.Look || state == Custom_State.Right)
             {
                 return;
             }
@@ -175,7 +177,10 @@ public class Custom : MonoBehaviour
             Destroy(cur_gem);
             Init_Gem();
         }
-        Destroy(MagicManager.instance.Gem_Show);
+        if (GameObject.Find("Bottle_Blue")==null)
+        {
+            Destroy(MagicManager.instance.Gem_Show);
+        }
         if (require_num <=0)
         {
             LevelController.Instance.Game_Next();
@@ -244,15 +249,16 @@ public class Custom : MonoBehaviour
             case Look_Type.Left:
                 animator.SetBool("Right", false);
                 animator.SetBool("Left", true);
+                state = Custom_State.Look;
                 break;
             case Look_Type.Right:
                 animator.SetBool("Left", false);
                 animator.SetBool("Right", true);
+                state = Custom_State.Right;
                 break;
             default:
                 break;
         }
-        state = Custom_State.Look;
         Set_LookTimer();
         if (look_action == null)
         {

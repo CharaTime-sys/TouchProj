@@ -39,6 +39,19 @@ public class PlayerHandInfo : MonoBehaviour
 
     public bool isGrab = false;
 
+    //药水相关
+    public Bottle bottle;
+    public bool if_create;
+    public GameObject fx_preb;
+    public GameObject fx_obj;
+    public Transform fx_pos;
+    public bool if_summon;
+
+    private void Start()
+    {
+        fx_preb = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Objs/FX_Gem.prefab", typeof(GameObject)) as GameObject;
+    }
+
     public void LeftHandPick(GameObject pickObj)
     {
         if (LeftHandStatus == HandStatus.Magic)
@@ -220,6 +233,17 @@ public class PlayerHandInfo : MonoBehaviour
         {
             InputListener();
         }
+
+        //合成
+        if (bottle!=null)
+        {
+            if_create = bottle.enabled && (MagicManager.instance.Gem_Show != null);
+        }
+        if (if_create && Input.GetKey(KeyCode.S)&& Input.GetKey(KeyCode.K))
+        {
+            Debug.Log("合成！");
+            LevelController.Instance.Game_Next();
+        }
     }
 
     IEnumerator LRFlag()
@@ -291,6 +315,7 @@ public class PlayerHandInfo : MonoBehaviour
         {
             transform.GetComponent<Animator>().SetTrigger("MakeTrigger");
             MagicManager.instance.MagicStart(mtIn);
+            Invoke(nameof(Summon_Magic), MagicTimer - 2.5f);
         }
     }
 
@@ -301,6 +326,11 @@ public class PlayerHandInfo : MonoBehaviour
             transform.GetComponent<Animator>().SetTrigger("MakeTrigger2");
             CursorController.instance.FixAndPlay();
             MagicManager.instance.MagicStart(mtIn);
+            if (!if_summon)
+            {
+                Invoke(nameof(Summon_Magic), MagicTimer - 2.5f);
+                if_summon = true;
+            }
         }
     }
 
@@ -308,5 +338,17 @@ public class PlayerHandInfo : MonoBehaviour
     {
         transform.GetComponent<Animator>().SetTrigger("BackTrigger");
         MagicManager.instance.MagicStop();
+    }
+
+    public void Summon_Magic()
+    {
+        fx_obj = Instantiate(fx_preb, new Vector3(-0.42f,-1f,0f),Quaternion.identity);
+        Destroy(fx_obj, 2.6f);
+        Invoke(nameof(Set_Summon), 2.6f);
+    }
+
+    public void Set_Summon()
+    {
+        if_summon = false;
     }
 }

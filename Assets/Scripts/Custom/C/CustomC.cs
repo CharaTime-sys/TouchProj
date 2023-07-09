@@ -9,7 +9,6 @@ public class CustomC : Custom
     protected override void Start()
     {
         base.Start();
-        MagicManager.instance.MagicTimer /= slow_speed;
     }
 
     public void Set_Timer(bool slow)

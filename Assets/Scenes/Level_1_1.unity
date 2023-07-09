@@ -349,6 +349,7 @@ MonoBehaviour:
   Gem_1: {fileID: 4707895163936555384, guid: 7b0617c2423911d4784937dea30090fd, type: 3}
   Gem_2: {fileID: 1130775917984238911, guid: b4d6a6020d430a94f8b0940a9ff97f6e, type: 3}
   Gem_3: {fileID: 8749098519701744836, guid: 9ab9ff67876fc404d8fc0a6978ec6608, type: 3}
+  Gem_4: {fileID: 0}
   Gem_Show: {fileID: 0}
   Gem_FX: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   MagicProgressUI: {fileID: 1124017504}
@@ -2655,6 +2656,13 @@ MonoBehaviour:
   MagicTimer: 3
   StartMagicTime: 0
   isLROn: 0
+  isGrab: 0
+  bottle: {fileID: 0}
+  if_create: 0
+  fx_preb: {fileID: 9015569551783693952, guid: 67230f8a349dc3940bc4781f0bf26961, type: 3}
+  fx_obj: {fileID: 0}
+  fx_pos: {fileID: 0}
+  if_summon: 0
 --- !u!1 &2089133869
 GameObject:
   m_ObjectHideFlags: 0

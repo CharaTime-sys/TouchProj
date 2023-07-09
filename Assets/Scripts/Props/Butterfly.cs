@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Butterfly : MonoBehaviour
 {
+    public float slow_speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,10 @@ public class Butterfly : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Slow()
+    {
+        MagicManager.instance.MagicTimer /= slow_speed;
     }
 }

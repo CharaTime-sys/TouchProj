@@ -174,7 +174,10 @@ public class LevelController1_1 : MonoBehaviour
         {
             Start_Scene();
             if_started = true;
-            SoundController.Instance.Play_Sfx("click");
+            if (SoundController.Instance!=null)
+            {
+                SoundController.Instance.Play_Sfx("click");
+            }
         }
     }
 
