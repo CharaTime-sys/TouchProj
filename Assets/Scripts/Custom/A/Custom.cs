@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Look_Type
 {
@@ -76,22 +77,30 @@ public class Custom : MonoBehaviour
     protected virtual void Init_Gem()
     {
         string path = "Assets/Prefabs/Props/Gem_";
-        switch (Get_RandomGemType())
+        if (GameObject.Find("Level1_2_Mark"))
         {
-            case MagicType.Type1:
-                path += "1.prefab";
-                gem_type = MagicType.Type1;
-                break;
-            case MagicType.Type2:
-                path += "2.prefab";
-                gem_type = MagicType.Type2;
-                break;
-            case MagicType.Type3:
-                path += "3.prefab";
-                gem_type = MagicType.Type3;
-                break;
-            default:
-                break;
+            path += "4.prefab";
+            gem_type = MagicType.Type4;
+        }
+        else
+        {
+            switch (Get_RandomGemType())
+            {
+                case MagicType.Type1:
+                    path += "1.prefab";
+                    gem_type = MagicType.Type1;
+                    break;
+                case MagicType.Type2:
+                    path += "2.prefab";
+                    gem_type = MagicType.Type2;
+                    break;
+                case MagicType.Type3:
+                    path += "3.prefab";
+                    gem_type = MagicType.Type3;
+                    break;
+                default:
+                    break;
+            }
         }
         GameObject target_obj = AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject;
         target_obj = Instantiate(target_obj, transform.GetChild(0).transform);
@@ -183,7 +192,7 @@ public class Custom : MonoBehaviour
     public MagicType Get_RandomGemType()
     {
         MagicType[] types = (MagicType[])System.Enum.GetValues(typeof(MagicType));
-        return types[Random.Range(0, types.Length)];
+        return types[Random.Range(0, types.Length - 1)];
     }
     #endregion
 

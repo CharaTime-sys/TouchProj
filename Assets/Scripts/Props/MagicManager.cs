@@ -9,7 +9,8 @@ public enum MagicType
 {
     Type1,
     Type2,
-    Type3
+    Type3,
+    Type4
 };
 public class MagicManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class MagicManager : MonoBehaviour
     public GameObject Gem_1;
     public GameObject Gem_2;
     public GameObject Gem_3;
+    public GameObject Gem_4;
 
     public GameObject Gem_Show = null;
 
@@ -102,6 +104,12 @@ public class MagicManager : MonoBehaviour
         {
             Destroy(Gem_Show);
             var go = Instantiate(Gem_3, GemPos.transform);
+            Gem_Show = go;
+        }
+        else if (mt == MagicType.Type4)
+        {
+            Destroy(Gem_Show);
+            var go = Instantiate(Gem_4, GemPos.transform);
             Gem_Show = go;
         }
     }
