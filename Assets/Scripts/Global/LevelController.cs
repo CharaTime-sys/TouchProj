@@ -21,8 +21,6 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject next_panel;
     #endregion
     [SerializeField] GameObject canvas;
-    [Header("鼠标指针")]
-    [SerializeField] Texture2D cursor_tex;
     public Custom custom;
     public AnimationClip intro_clip;
 
@@ -64,7 +62,7 @@ public class LevelController : MonoBehaviour
                 }
                 else
                 {
-                    SceneController.Instance._LoadScene(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name);
+                    SceneController.Instance._LoadScene();
                 }
             }
         }
@@ -89,7 +87,6 @@ public class LevelController : MonoBehaviour
     #region 初始化相关
     private void Init_UI()
     {
-        Cursor.SetCursor(cursor_tex, new Vector2(0.5f, 0.5f), CursorMode.Auto);
         canvas = Instantiate(canvas);
         dead_panel = Instantiate(dead_panel, canvas.transform);
         guest_panel = Instantiate(guest_panel, canvas.transform);
@@ -155,6 +152,7 @@ public class LevelController : MonoBehaviour
             dead_panel = Instantiate(dead_panel);
         }
         Time.timeScale = 0;
+        GameObject.Find("Player").GetComponent<Animator>().enabled = false;
     }
 
     public void Game_Paused()

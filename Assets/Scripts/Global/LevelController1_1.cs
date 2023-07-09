@@ -18,15 +18,15 @@ public class LevelController1_1 : MonoBehaviour
     [SerializeField] GameObject dead_panel;
     [SerializeField] GameObject guest_panel;
     [SerializeField] GameObject pause_panel;
+    [SerializeField] GameObject next_panel;
     #endregion
     [SerializeField] GameObject canvas;
-    [Header("鼠标指针")]
-    [SerializeField] Texture2D cursor_tex;
     public Custom custom;
     public AnimationClip intro_clip;
     bool if_paused;
-    bool if_started = false;
-    bool if_animed = false;
+    public bool if_started = false;
+    public bool if_animed = false;
+    bool if_next = false;
 
     public GameObject GuestBornPos;
     public GameObject stage;
@@ -52,6 +52,20 @@ public class LevelController1_1 : MonoBehaviour
         {
             Game_Ready();
         }
+        if (if_next)
+        {
+            if (Input.anyKeyDown)
+            {
+                if (SceneController.Instance == null)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else
+                {
+                    SceneController.Instance._LoadScene();
+                }
+            }
+        }
         if (!if_started)
         {
             return;
@@ -73,19 +87,21 @@ public class LevelController1_1 : MonoBehaviour
     #region 初始化相关
     private void Init_UI()
     {
-        Cursor.SetCursor(cursor_tex, new Vector2(0.5f, 0.5f), CursorMode.Auto);
         canvas = Instantiate(canvas);
         dead_panel = Instantiate(dead_panel, canvas.transform);
         guest_panel = Instantiate(guest_panel, canvas.transform);
         pause_panel = Instantiate(pause_panel, canvas.transform);
+        next_panel = Instantiate(next_panel, canvas.transform);
 
         canvas.name = "Canvas";
         dead_panel.name = "Dead_Panel";
         guest_panel.name = "Guest_Panel";
         pause_panel.name = "Pause_Panel";
+        next_panel.name = "Next_Panel";
 
         dead_panel.SetActive(false);
         pause_panel.SetActive(false);
+        next_panel.SetActive(false);
     }
 
     private void Set_Btn()
@@ -166,6 +182,19 @@ public class LevelController1_1 : MonoBehaviour
     {
         start_text.SetActive(true);
         if_animed = true;
+    }
+
+    public void Game_Next()
+    {
+        if (next_panel != null)
+        {
+            next_panel.SetActive(true);
+        }
+        else
+        {
+            next_panel = Instantiate(next_panel);
+        }
+        if_next = true;
     }
     #endregion
 }
