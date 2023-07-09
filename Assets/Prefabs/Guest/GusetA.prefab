@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   look_time: 10
   look_time_range: 2
-  wait_time: 5
+  wait_time: 6
   wait_time_range: 1
   look_timer: 0
   wait_timer: 0

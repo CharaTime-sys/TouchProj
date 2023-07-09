@@ -37,6 +37,8 @@ public class PlayerHandInfo : MonoBehaviour
 
     public bool isLROn = false;
 
+    public bool isGrab = false;
+
     public void LeftHandPick(GameObject pickObj)
     {
         if (LeftHandStatus == HandStatus.Magic)
@@ -211,6 +213,7 @@ public class PlayerHandInfo : MonoBehaviour
         {
             isMouse2Down = false;
             MTimeEnd = Time.time;
+            EndMagic();
         }
 
         if (!isLROn)
@@ -274,7 +277,9 @@ public class PlayerHandInfo : MonoBehaviour
         //³¤°´Êó±ê
         if(((Time.time - MTimeStart) > longpresstime) && isMouse2Down)
         {
-            UseMagic2(MagicType.Type2);
+            MagicType type = GameObject.Find("GuestBornPos").transform.GetChild(0).GetComponent<Custom>().gem_type;
+            UseMagic2(type);
+            LeftHandPick(StoneManager.instance.s2);
         }
 
     }

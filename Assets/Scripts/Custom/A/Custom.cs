@@ -147,7 +147,7 @@ public class Custom : MonoBehaviour
     protected virtual void Check_Player()
     {
         //ÕÊº“√ª”–∆€’©
-        if (player.LeftHandStatus == HandStatus.Nothing && player.RightHandStatus == HandStatus.Nothing)
+        if (player.LeftHandStatus == HandStatus.Nothing && player.RightHandStatus == HandStatus.Nothing && !player.isGrab)
         {
             return;
         }

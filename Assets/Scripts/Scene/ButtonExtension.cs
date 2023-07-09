@@ -16,9 +16,9 @@ public class ButtonExtension : MonoBehaviour
     public bool isExit = false;
     private float downTime = 0f;
 
-    private Button_Press_Type type;
+    protected Button_Press_Type type;
 
-    void Update()
+    protected virtual void Update()
     {
         //按下之后开始计时
         if (isDown)
@@ -39,7 +39,7 @@ public class ButtonExtension : MonoBehaviour
         type = Button_Press_Type.Short;
     }
 
-    private void OnMouseUp()
+    protected virtual void OnMouseUp()
     {
         //设置抬起状态
         isDown = false;
