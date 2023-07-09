@@ -1302,6 +1302,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
+      propertyPath: intro
+      value: "\u987E\u5BA2A\r\n\u6027\u522B\uFF1A\u7537\r\n\u8EAB\u4EFD\uFF1A\u79D1\u5B66\u5BB6\r\n\u7279\u70B9\uFF1A\u6700\u8FD1\u4F3C\u4E4E\u683C\u5916\u559C\u6B22\u5149\u4E34\u672C\u5E97\uFF0C\u4E0D\u8FC7\u542C\u8BF4\u4ED6\u6700\u8FD1\u5728\u5BFB\u627E\u6700\u7F8E\u7684\u84DD\u5B9D\u77F3\uFF1F\u8FD9\u53EF\u96BE\u4E0D\u5012\u6700\u5F3A\u7684\u73E0\u5B9D\u5546\u4EBA\uFF01\u6211\u7684\u84DD\u5B9D\u77F3\u79D8\u65B9\u53EF\u662F\uFF1A\u7528\u6F02\u4EAE\u7684\u7EA2\u5B9D\u77F3\u52A0\u4E0A\u5177\u6709\u9B45\u529B\u7684\u84DD\u8272\u836F\u6C34\uFF01\u9535\u9535\uFF01\u770B\u770B\u8FD9\u662F\u591A\u6F02\u4EAE\u7684\u84DD\u5B9D\u77F3\uFF01"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
       propertyPath: stage
       value: 
       objectReference: {fileID: 1469745599}
@@ -1309,6 +1313,10 @@ PrefabInstance:
       propertyPath: custom
       value: 
       objectReference: {fileID: 2547357856292870681, guid: e1f138748bad1904c817bc87f378cbba, type: 3}
+    - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 645809cd22d22ab40845e245f8c9ce19, type: 3}
     - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
       propertyPath: intro_clip
       value: 
@@ -2831,6 +2839,10 @@ MonoBehaviour:
   isGrab: 0
   bottle: {fileID: 1426504984}
   if_create: 0
+  fx_preb: {fileID: 0}
+  fx_obj: {fileID: 0}
+  fx_pos: {fileID: 0}
+  if_summon: 0
 --- !u!1 &2089133869
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,10 +7,13 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public static SceneController Instance;
+    public AudioSource audiosource;
     public Image progress_sp;
     public GameObject progress_text;
     public GameObject Load_Panel;
     public Texture2D cursor_tex;
+
+    public bool if_start;
     private void Awake()
     {
         if (Instance == null)
@@ -27,6 +30,18 @@ public class SceneController : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         Cursor.SetCursor(cursor_tex, new Vector2(0f, 0f), CursorMode.Auto);
+    }
+
+    private void Update()
+    {
+        if (!if_start)
+        {
+            if (Input.anyKeyDown)
+            {
+                _LoadScene();
+                if_start = true;
+            }
+        }
     }
 
     public void _LoadScene(string name)

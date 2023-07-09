@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class LevelController : MonoBehaviour
 {
@@ -31,6 +32,12 @@ public class LevelController : MonoBehaviour
 
     public GameObject GuestBornPos;
     public GameObject stage;
+
+    public Image intro_img;
+    public TextMeshProUGUI intro_txt;
+    [TextArea]
+    public string intro;
+    public Sprite sprite;
     private void Awake()
     {
         Instance = this;
@@ -51,20 +58,6 @@ public class LevelController : MonoBehaviour
         if (if_animed && !if_paused)
         {
             Game_Ready();
-        }
-        if (if_next)
-        {
-            if (Input.anyKeyDown)
-            {
-                if (SceneController.Instance==null)
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                }
-                else
-                {
-                    SceneController.Instance._LoadScene();
-                }
-            }
         }
         if (!if_started)
         {
@@ -112,6 +105,11 @@ public class LevelController : MonoBehaviour
         pause_quit_btn = GameObject.Find("Canvas").transform.Find("Pause_Panel/Panel/quit_btn").GetComponent<Button>();
 
         start_text = GameObject.Find("Canvas").transform.Find("Guest_Panel/start_text").gameObject;
+        intro_img = GameObject.Find("Canvas").transform.Find("Guest_Panel/People").GetComponent<Image>();
+        intro_txt = GameObject.Find("Canvas").transform.Find("Guest_Panel/Intro").GetComponent<TextMeshProUGUI>();
+        intro_txt.text = intro;
+        intro_img.sprite = sprite;
+        intro_img.SetNativeSize();
 
         replay_btn.onClick.AddListener(() => { if (SceneController.Instance == null) { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); return; } SceneController.Instance._LoadScene(SceneManager.GetActiveScene().name);  });
         quit_btn.onClick.AddListener(() => { if (SceneController.Instance == null){ SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); return; } SceneController.Instance.LoadScene("Start_Game"); });
@@ -192,15 +190,14 @@ public class LevelController : MonoBehaviour
 
     public void Game_Next()
     {
-        if (next_panel != null)
+        if (SceneController.Instance == null)
         {
-            next_panel.SetActive(true);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
-            next_panel = Instantiate(next_panel);
+            SceneController.Instance._LoadScene();
         }
-        if_next = true;
     }
 
     public void Set_Animed()

@@ -1351,6 +1351,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
+      propertyPath: intro
+      value: "\u987E\u5BA2A\r\n\u6027\u522B\uFF1A\u7537\r\n\u8EAB\u4EFD\uFF1A\u79D1\u5B66\u5BB6\r\n\u7279\u70B9\uFF1A\u56E0\u4E3A\u957F\u65F6\u95F4\u5728\u9634\u6697\u7684\u5730\u65B9\u8FDB\u884C\u79D1\u7814\u5DE5\u4F5C\uFF0C\u5BF9\u4E8E\u5149\u4EAE\u4F3C\u4E4E\u683C\u5916\u654F\u611F\uFF0C\u53EF\u4EE5\u8BD5\u8BD5\u7528\u5149\u4EAE\u53BB\u5438\u5F15\u4ED6\u7684\u6CE8\u610F\u529B\u2014\u2014"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
       propertyPath: stage
       value: 
       objectReference: {fileID: 1469745599}
@@ -1358,6 +1362,10 @@ PrefabInstance:
       propertyPath: custom
       value: 
       objectReference: {fileID: 2547357856292870681, guid: e1f138748bad1904c817bc87f378cbba, type: 3}
+    - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 645809cd22d22ab40845e245f8c9ce19, type: 3}
     - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
       propertyPath: intro_clip
       value: 

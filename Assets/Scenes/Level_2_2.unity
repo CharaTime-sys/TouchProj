@@ -1449,6 +1449,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
+      propertyPath: intro
+      value: "\u987E\u5BA2C\r\n\u6027\u522B\uFF1A\u7537\r\n\u8EAB\u4EFD\uFF1A\u8774\u8776\u6536\u85CF\u5BB6\r\n\u7279\u70B9\uFF1A\u54FC\u54FC\uFF0C\u6211\u73B0\u5728\u7684\u9B54\u529B\u8FDB\u9636\u4E86\uFF01\u6211\u4EEC\u53EF\u4EE5\u64CD\u7EB5\u770B\u4E0D\u89C1\u7684\u7B2C\u4E09\u53EA\u624B\u8FDB\u884C\u70B9\u77F3\u6210\u91D1\u4E86\uFF01\u5229\u7528\u957F\u6309\u9F20\u6807\u5DE6\u952E\u6293\u4F4F\u77F3\u5934\uFF0C\u540C\u65F6\u957F\u6309\u53F3\u952E\uFF0C\u5C31\u53EF\u4EE5\u914D\u5408\u6211\u4EEC\u5176\u4ED6\u7684\u624B\u4E00\u8D77\u8FDB\u884C\u70B9\u77F3\u6210\u91D1\u4E86\uFF01\r\n\uFF08PS\uFF1A\u4F7F\u7528\u7B2C\u4E09\u53EA\u624B\u7EDD\u5BF9\u4E0D\u662F\u56E0\u4E3A\u90A3\u5BB6\u4F19\u7684\u8774\u8776\u4F1A\u8BA9\u6211\u7684\u9B54\u6CD5\u901F\u5EA6\u51CF\u6162\uFF01\u4F1F\u5927\u7684\u73E0\u5B9D\u5546\u4EBA\u7EDD\u5BF9\u4E0D\u4F1A\u88AB\u533A\u533A\u8774\u8776\u7684\u9CDE\u7C89\u6240\u5F71\u54CD\uFF01\u963F\u568F\u2014\u2014\uFF01\uFF09"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
       propertyPath: stage
       value: 
       objectReference: {fileID: 1469745599}
@@ -1456,6 +1460,10 @@ PrefabInstance:
       propertyPath: custom
       value: 
       objectReference: {fileID: -1248175807564024256, guid: 508c0361b3244294ebe1d10028d019bf, type: 3}
+    - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aefe7bb29ad86bb4ca481e0c2c2fb2b1, type: 3}
     - target: {fileID: 3475404996018870788, guid: e88406e2461f74446b8d60d39fdc4bbb, type: 3}
       propertyPath: intro_clip
       value: 
@@ -3000,6 +3008,12 @@ MonoBehaviour:
   StartMagicTime: 0
   isLROn: 0
   isGrab: 0
+  bottle: {fileID: 0}
+  if_create: 0
+  fx_preb: {fileID: 0}
+  fx_obj: {fileID: 0}
+  fx_pos: {fileID: 0}
+  if_summon: 0
 --- !u!1 &2089133869
 GameObject:
   m_ObjectHideFlags: 0
