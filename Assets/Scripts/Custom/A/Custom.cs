@@ -41,6 +41,9 @@ public class Custom : MonoBehaviour
     public MagicType gem_type;
     [Header("需求次数")]
     public int require_num;
+
+    public Custom_State State { get => state;}
+
     /// <summary>
     /// 设置行为
     /// </summary>

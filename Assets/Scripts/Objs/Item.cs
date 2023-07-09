@@ -9,6 +9,9 @@ public class Item : ButtonExtension
     protected override void OnMouseDown()
     {
         base.OnMouseDown();
-        LevelController.Instance.custom.Look(type);
+        if (LevelController.Instance.custom.State == Custom_State.Idle)
+        {
+            LevelController.Instance.custom.Look(type);
+        }
     }
 }
