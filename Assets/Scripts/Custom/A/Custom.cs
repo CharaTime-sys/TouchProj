@@ -46,6 +46,11 @@ public class Custom : MonoBehaviour
 
     public Custom_State State { get => state;}
 
+    public GameObject Gem1;
+    public GameObject Gem2;
+    public GameObject Gem3;
+    public GameObject Gem4;
+
     /// <summary>
     /// 设置行为
     /// </summary>
@@ -77,10 +82,10 @@ public class Custom : MonoBehaviour
     #region 初始化相关
     protected virtual void Init_Gem()
     {
-        string path = "Assets/Prefabs/Props/Gem_";
+        GameObject target_obj = null;
         if (GameObject.Find("Level1_2_Mark"))
         {
-            path += "4.prefab";
+            target_obj = Gem4;
             gem_type = MagicType.Type4;
         }
         else
@@ -88,22 +93,21 @@ public class Custom : MonoBehaviour
             switch (Get_RandomGemType())
             {
                 case MagicType.Type1:
-                    path += "1.prefab";
                     gem_type = MagicType.Type1;
+                    target_obj = Gem1;
                     break;
                 case MagicType.Type2:
-                    path += "2.prefab";
+                    target_obj = Gem2;
                     gem_type = MagicType.Type2;
                     break;
                 case MagicType.Type3:
-                    path += "3.prefab";
+                    target_obj = Gem3;
                     gem_type = MagicType.Type3;
                     break;
                 default:
                     break;
             }
         }
-        GameObject target_obj = AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject;
         target_obj = Instantiate(target_obj, transform.GetChild(0).transform);
         target_obj.transform.localScale = new Vector3(2.23f,2.23f,2.23f);
         target_obj.transform.localPosition = new Vector3(0.05f, 0.42f, 0);

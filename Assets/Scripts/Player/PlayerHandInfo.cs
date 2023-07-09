@@ -47,9 +47,15 @@ public class PlayerHandInfo : MonoBehaviour
     public Transform fx_pos;
     public bool if_summon;
 
+    //stone1 stone2
+    public GameObject stone1;
+    public GameObject stone2;
+    public GameObject stone3;
+    public GameObject stone4;
+
     private void Start()
     {
-        fx_preb = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Objs/FX_Gem.prefab", typeof(GameObject)) as GameObject;
+        //fx_preb = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Objs/FX_Gem.prefab", typeof(GameObject)) as GameObject;
     }
 
     public void LeftHandPick(GameObject pickObj)
@@ -99,13 +105,13 @@ public class PlayerHandInfo : MonoBehaviour
         LeftHandStone.GetComponent<Stone>().isPicked = true;
         if(LeftHandStone.GetComponent<Stone>().stype == StoneType.L1 )
         {
-            var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone1.prefab", typeof(GameObject)) as GameObject;
+            var go = stone1;
             EventManager.instance.PlayerStoneOn(1, go);
             EventManager.instance.PlayerStoneOn(3, go);
         }
         else if(LeftHandStone.GetComponent<Stone>().stype == StoneType.L2)
         {
-            var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone2.prefab", typeof(GameObject)) as GameObject;
+            var go = stone2;
             EventManager.instance.PlayerStoneOn(1, go);
             EventManager.instance.PlayerStoneOn(3, go);
         }
@@ -157,13 +163,13 @@ public class PlayerHandInfo : MonoBehaviour
         RightHandStone.GetComponent<Stone>().isPicked = true;
         if (RightHandStone.GetComponent<Stone>().stype == StoneType.R1)
         {
-            var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone3.prefab", typeof(GameObject)) as GameObject;
+            var go = stone3;
             EventManager.instance.PlayerStoneOn(2, go);
             EventManager.instance.PlayerStoneOn(4, go);
         }
         else if (RightHandStone.GetComponent<Stone>().stype == StoneType.R2)
         {
-            var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone4.prefab", typeof(GameObject)) as GameObject;
+            var go = stone4;
             EventManager.instance.PlayerStoneOn(2, go);
             EventManager.instance.PlayerStoneOn(4, go);
         }

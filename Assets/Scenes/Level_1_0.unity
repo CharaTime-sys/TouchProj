@@ -3024,6 +3024,10 @@ MonoBehaviour:
   if_animed: 0
   GuestBornPos: {fileID: 788616413}
   stage: {fileID: 1469745599}
+  intro_img: {fileID: 0}
+  intro_txt: {fileID: 0}
+  intro: 
+  sprite: {fileID: 0}
 --- !u!1 &1245876167
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,10 +4143,14 @@ MonoBehaviour:
   isGrab: 0
   bottle: {fileID: 0}
   if_create: 0
-  fx_preb: {fileID: 0}
+  fx_preb: {fileID: 9015569551783693952, guid: 67230f8a349dc3940bc4781f0bf26961, type: 3}
   fx_obj: {fileID: 0}
   fx_pos: {fileID: 0}
   if_summon: 0
+  stone1: {fileID: 5665307167898538123, guid: 1ce9c3df20ab8f64e8d539cb9913cff7, type: 3}
+  stone2: {fileID: 5665307167898538123, guid: 9715c0056b3a5594197c0e3952fe9534, type: 3}
+  stone3: {fileID: 5665307167898538123, guid: f6ee936bc8d46fc4da4c6a426dcfee79, type: 3}
+  stone4: {fileID: 5665307167898538123, guid: 09e126b928417974cb1e2545bc6617b8, type: 3}
 --- !u!1 &2089133869
 GameObject:
   m_ObjectHideFlags: 0
