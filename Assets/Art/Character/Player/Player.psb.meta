@@ -92,28 +92,6 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: "\u56FE\u5C42 4"
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1746
-      y: 1042
-      width: 1920
-      height: 9
-    spriteID: 3f23582f473b6704a9f1230a965d6fd6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 1746, y: 552}
-    spritePosition: {x: 0, y: 490}
   - name: "\u65B0\u5EFA\u7EC4"
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -121,8 +99,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1746
-      y: 4
+      x: 4
+      y: 2078
       width: 844
       height: 1030
     spriteID: 590fe74bf238fe6468178750f2315b50
@@ -134,7 +112,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1746, y: 4}
+    uvTransform: {x: 4, y: 2078}
     spritePosition: {x: 501, y: 0}
   - name: "\u65B0\u5EFA\u7EC4"
     originalName: 
@@ -143,8 +121,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 891
-      y: 4
+      x: 4
+      y: 1040
       width: 847
       height: 1030
     spriteID: 969ef57aee3128d439b4f82e1dd0329b
@@ -156,7 +134,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 891, y: 4}
+    uvTransform: {x: 4, y: 1040}
     spritePosition: {x: 499, y: 0}
   - name: "\u65B0\u5EFA\u7EC4"
     originalName: 
@@ -238,6 +216,28 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
   documentPivot: {x: 0, y: 0}
@@ -254,23 +254,13 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: "\u56FE\u5C42 4"
-    spriteName: "\u56FE\u5C42 4"
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 3f23582f473b6704a9f1230a965d6fd6
-    layerID: 14
-    mosaicPosition: {x: 1746, y: 1042}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: "\u65B0\u5EFA\u7EC4"
     spriteName: "\u65B0\u5EFA\u7EC4"
     isGroup: 0
     parentIndex: -1
     spriteID: 590fe74bf238fe6468178750f2315b50
     layerID: 13
-    mosaicPosition: {x: 1746, y: 4}
+    mosaicPosition: {x: 4, y: 2078}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -280,7 +270,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 969ef57aee3128d439b4f82e1dd0329b
     layerID: 9
-    mosaicPosition: {x: 891, y: 4}
+    mosaicPosition: {x: 4, y: 1040}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -294,16 +284,6 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: "\u80CC\u666F"
-    spriteName: "\u80CC\u666F"
-    isGroup: 0
-    parentIndex: -1
-    spriteID: c5d7ae4108e47274b953a8d7e8986229
-    layerID: 1
-    mosaicPosition: {x: 4, y: 4}
-    flatten: 0
-    isImported: 0
-    isVisible: 0
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   generateGOHierarchy: 0
