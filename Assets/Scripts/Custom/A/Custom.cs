@@ -14,6 +14,7 @@ public enum Custom_State
 {
     Idle,
     Look,
+    Right,
 }
 
 public class Custom : MonoBehaviour
@@ -31,7 +32,7 @@ public class Custom : MonoBehaviour
 
     #region 组件
     public Animator animator;
-    Custom_State state;
+    public Custom_State state;
     System.Action idle_action;
     System.Action look_action;
     public PlayerHandInfo player;
@@ -44,6 +45,11 @@ public class Custom : MonoBehaviour
     public int require_num;
 
     public Custom_State State { get => state;}
+
+    public GameObject Gem1;
+    public GameObject Gem2;
+    public GameObject Gem3;
+    public GameObject Gem4;
 
     /// <summary>
     /// 设置行为
@@ -76,10 +82,10 @@ public class Custom : MonoBehaviour
     #region 初始化相关
     protected virtual void Init_Gem()
     {
-        string path = "Assets/Prefabs/Props/Gem_";
+        GameObject target_obj = null;
         if (GameObject.Find("Level1_2_Mark"))
         {
-            path += "4.prefab";
+            target_obj = Gem4;
             gem_type = MagicType.Type4;
         }
         else
@@ -87,22 +93,21 @@ public class Custom : MonoBehaviour
             switch (Get_RandomGemType())
             {
                 case MagicType.Type1:
-                    path += "1.prefab";
                     gem_type = MagicType.Type1;
+                    target_obj = Gem1;
                     break;
                 case MagicType.Type2:
-                    path += "2.prefab";
+                    target_obj = Gem2;
                     gem_type = MagicType.Type2;
                     break;
                 case MagicType.Type3:
-                    path += "3.prefab";
+                    target_obj = Gem3;
                     gem_type = MagicType.Type3;
                     break;
                 default:
                     break;
             }
         }
-        GameObject target_obj = AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject;
         target_obj = Instantiate(target_obj, transform.GetChild(0).transform);
         target_obj.transform.localScale = new Vector3(2.23f,2.23f,2.23f);
         target_obj.transform.localPosition = new Vector3(0.05f, 0.42f, 0);
@@ -130,6 +135,7 @@ public class Custom : MonoBehaviour
                 }
                 break;
             case Custom_State.Look:
+            case Custom_State.Right:
                 if (wait_timer >= 0f)
                 {
                     wait_timer -= Time.deltaTime;
@@ -147,14 +153,14 @@ public class Custom : MonoBehaviour
     protected virtual void Check_Player()
     {
         //玩家没有欺诈
-        if (player.LeftHandStatus == HandStatus.Nothing && player.RightHandStatus == HandStatus.Nothing)
+        if (player.LeftHandStatus == HandStatus.Nothing && player.RightHandStatus == HandStatus.Nothing && !player.isGrab)
         {
             return;
         }
         else
         {
             //顾客没发现
-            if (state == Custom_State.Look)
+            if (state == Custom_State.Look || state == Custom_State.Right)
             {
                 return;
             }
@@ -175,7 +181,10 @@ public class Custom : MonoBehaviour
             Destroy(cur_gem);
             Init_Gem();
         }
-        Destroy(MagicManager.instance.Gem_Show);
+        if (GameObject.Find("Bottle_Blue")==null)
+        {
+            Destroy(MagicManager.instance.Gem_Show);
+        }
         if (require_num <=0)
         {
             LevelController.Instance.Game_Next();
@@ -244,15 +253,16 @@ public class Custom : MonoBehaviour
             case Look_Type.Left:
                 animator.SetBool("Right", false);
                 animator.SetBool("Left", true);
+                state = Custom_State.Look;
                 break;
             case Look_Type.Right:
                 animator.SetBool("Left", false);
                 animator.SetBool("Right", true);
+                state = Custom_State.Right;
                 break;
             default:
                 break;
         }
-        state = Custom_State.Look;
         Set_LookTimer();
         if (look_action == null)
         {

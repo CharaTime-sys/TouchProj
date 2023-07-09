@@ -37,6 +37,27 @@ public class PlayerHandInfo : MonoBehaviour
 
     public bool isLROn = false;
 
+    public bool isGrab = false;
+
+    //药水相关
+    public Bottle bottle;
+    public bool if_create;
+    public GameObject fx_preb;
+    public GameObject fx_obj;
+    public Transform fx_pos;
+    public bool if_summon;
+
+    //stone1 stone2
+    public GameObject stone1;
+    public GameObject stone2;
+    public GameObject stone3;
+    public GameObject stone4;
+
+    private void Start()
+    {
+        //fx_preb = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Objs/FX_Gem.prefab", typeof(GameObject)) as GameObject;
+    }
+
     public void LeftHandPick(GameObject pickObj)
     {
         if (LeftHandStatus == HandStatus.Magic)
@@ -84,13 +105,13 @@ public class PlayerHandInfo : MonoBehaviour
         LeftHandStone.GetComponent<Stone>().isPicked = true;
         if(LeftHandStone.GetComponent<Stone>().stype == StoneType.L1 )
         {
-            var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone1.prefab", typeof(GameObject)) as GameObject;
+            var go = stone1;
             EventManager.instance.PlayerStoneOn(1, go);
             EventManager.instance.PlayerStoneOn(3, go);
         }
         else if(LeftHandStone.GetComponent<Stone>().stype == StoneType.L2)
         {
-            var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone2.prefab", typeof(GameObject)) as GameObject;
+            var go = stone2;
             EventManager.instance.PlayerStoneOn(1, go);
             EventManager.instance.PlayerStoneOn(3, go);
         }
@@ -142,13 +163,13 @@ public class PlayerHandInfo : MonoBehaviour
         RightHandStone.GetComponent<Stone>().isPicked = true;
         if (RightHandStone.GetComponent<Stone>().stype == StoneType.R1)
         {
-            var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone3.prefab", typeof(GameObject)) as GameObject;
+            var go = stone3;
             EventManager.instance.PlayerStoneOn(2, go);
             EventManager.instance.PlayerStoneOn(4, go);
         }
         else if (RightHandStone.GetComponent<Stone>().stype == StoneType.R2)
         {
-            var go = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Props/Stone4.prefab", typeof(GameObject)) as GameObject;
+            var go = stone4;
             EventManager.instance.PlayerStoneOn(2, go);
             EventManager.instance.PlayerStoneOn(4, go);
         }
@@ -211,11 +232,23 @@ public class PlayerHandInfo : MonoBehaviour
         {
             isMouse2Down = false;
             MTimeEnd = Time.time;
+            EndMagic();
         }
 
         if (!isLROn)
         {
             InputListener();
+        }
+
+        //合成
+        if (bottle!=null)
+        {
+            if_create = bottle.enabled && (MagicManager.instance.Gem_Show != null);
+        }
+        if (if_create && Input.GetKey(KeyCode.S)&& Input.GetKey(KeyCode.K))
+        {
+            Debug.Log("合成！");
+            LevelController.Instance.Game_Next();
         }
     }
 
@@ -274,7 +307,9 @@ public class PlayerHandInfo : MonoBehaviour
         //长按鼠标
         if(((Time.time - MTimeStart) > longpresstime) && isMouse2Down)
         {
-            UseMagic2(MagicType.Type2);
+            MagicType type = GameObject.Find("GuestBornPos").transform.GetChild(0).GetComponent<Custom>().gem_type;
+            UseMagic2(type);
+            LeftHandPick(StoneManager.instance.s2);
         }
 
     }
@@ -286,6 +321,7 @@ public class PlayerHandInfo : MonoBehaviour
         {
             transform.GetComponent<Animator>().SetTrigger("MakeTrigger");
             MagicManager.instance.MagicStart(mtIn);
+            Invoke(nameof(Summon_Magic), MagicTimer - 2.5f);
         }
     }
 
@@ -296,6 +332,11 @@ public class PlayerHandInfo : MonoBehaviour
             transform.GetComponent<Animator>().SetTrigger("MakeTrigger2");
             CursorController.instance.FixAndPlay();
             MagicManager.instance.MagicStart(mtIn);
+            if (!if_summon)
+            {
+                Invoke(nameof(Summon_Magic), MagicTimer - 2.5f);
+                if_summon = true;
+            }
         }
     }
 
@@ -303,5 +344,17 @@ public class PlayerHandInfo : MonoBehaviour
     {
         transform.GetComponent<Animator>().SetTrigger("BackTrigger");
         MagicManager.instance.MagicStop();
+    }
+
+    public void Summon_Magic()
+    {
+        fx_obj = Instantiate(fx_preb, new Vector3(-0.42f,-1f,0f),Quaternion.identity);
+        Destroy(fx_obj, 2.6f);
+        Invoke(nameof(Set_Summon), 2.6f);
+    }
+
+    public void Set_Summon()
+    {
+        if_summon = false;
     }
 }

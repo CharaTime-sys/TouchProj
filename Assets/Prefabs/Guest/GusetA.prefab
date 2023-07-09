@@ -133,14 +133,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   look_time: 10
   look_time_range: 2
-  wait_time: 5
+  wait_time: 6
   wait_time_range: 1
   look_timer: 0
   wait_timer: 0
   animator: {fileID: 0}
+  state: 0
   player: {fileID: 0}
   gem_type: 0
   require_num: 1
+  Gem1: {fileID: 4707895163936555384, guid: 7b0617c2423911d4784937dea30090fd, type: 3}
+  Gem2: {fileID: 1130775917984238911, guid: b4d6a6020d430a94f8b0940a9ff97f6e, type: 3}
+  Gem3: {fileID: 8749098519701744836, guid: 9ab9ff67876fc404d8fc0a6978ec6608, type: 3}
+  Gem4: {fileID: 8749098519701744836, guid: f07a0495a6f768743880d93c61fb1790, type: 3}
 --- !u!212 &2547357856292870682
 SpriteRenderer:
   m_ObjectHideFlags: 0
